@@ -28,12 +28,15 @@
       <div id="simple-polyline" class="map"></div>
     </div>
     <div class="example">
-      <p>A simple polyline</p>
-      <div id="example-2" class="map"></div>
+      <p>A hoverable polyline</p>
       <code>
         <pre>
+          map = SM.Map.create(divId: 'hoverable-polyline')
+          polyline = SM.HoverablePolyline.create(points: points)
+          map.addObject(polyline).fitAllObjects()
         </pre>
-      <code>
+      </code>
+      <div id="hoverable-polyline" class="map"></div>
     </div>
   </body>
   <script type="text/javascript" src="assets/bpm_libs.js"></script>
