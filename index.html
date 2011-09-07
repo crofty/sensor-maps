@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="assets/bpm_styles.css" type="text/css" media="screen" charset="utf-8" />
+
+    <title>sensor-maps</title>
+  </head>
+  <body>
+    <h1>Sensor Maps Examples</h1>
+    <code>
+      <pre>
+        window.points = [
+          [51.509, -0.08],
+          [51.503, -0.06],
+          [51.51, -0.047]
+        ]
+      </pre>
+    </code>
+    <h2 id="polylines">Polylines</h2>
+    <div class="example">
+      <p>A simple polyline</p>
+      <code>
+        <pre>
+          map = SM.Map.create(divId: 'simple-polyline')
+          polyline = SM.Polyline.create(points: points)
+          map.addObject(polyline).fitAllObjects()
+        </pre>
+      </code>
+      <div id="simple-polyline" class="map"></div>
+    </div>
+    <div class="example">
+      <p>A simple polyline</p>
+      <div id="example-2" class="map"></div>
+      <code>
+        <pre>
+        </pre>
+      <code>
+    </div>
+  </body>
+  <script type="text/javascript" src="assets/bpm_libs.js"></script>
+  <script type="text/javascript" src="assets/example.js"></script>
+    <script type="text/javascript">
+      spade.ready(function() { 
+        spade.require('sensor-maps'); 
+        spade.require('sensor-maps/~example/example'); 
+      });
+    </script>
+</html>

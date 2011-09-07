@@ -1,0 +1,46 @@
+{
+  "spade": {
+    "version": "1.0.1",
+    "path": "/Users/jamescroft/.bpm/gems/spade-1.0.1"
+  },
+  "sproutcore": {
+    "version": "2.0.beta.3",
+    "path": "/Users/jamescroft/Development/sensor-maps/vendor/sproutcore"
+  },
+  "sproutcore-runtime": {
+    "version": "2.0.beta.3",
+    "path": "/Users/jamescroft/Development/sensor-maps/vendor/sproutcore-runtime"
+  },
+  "sproutcore-views": {
+    "version": "2.0.beta.3",
+    "path": "/Users/jamescroft/Development/sensor-maps/vendor/sproutcore-views"
+  },
+  "sproutcore-handlebars": {
+    "version": "2.0.beta.3",
+    "path": "/Users/jamescroft/Development/sensor-maps/vendor/sproutcore-handlebars"
+  },
+  "sproutcore-handlebars-format": {
+    "version": "2.0.beta.3",
+    "path": "/Users/jamescroft/Development/sensor-maps/vendor/sproutcore-handlebars-format"
+  },
+  "sproutcore-metal": {
+    "version": "2.0.beta.3",
+    "path": "/Users/jamescroft/Development/sensor-maps/vendor/sproutcore-metal"
+  },
+  "spade-qunit": {
+    "version": "1.0.1",
+    "path": "/Users/jamescroft/.bpm/gems/spade-qunit-1.0.1"
+  },
+  "jquery": {
+    "version": "1.6.2",
+    "path": "/Users/jamescroft/Development/sensor-maps/vendor/jquery-1.6.2"
+  },
+  "handlebars": {
+    "version": "1.0.0.beta.3",
+    "path": "/Users/jamescroft/Development/sensor-maps/vendor/handlebars"
+  },
+  "qunit": {
+    "version": "1.0.0.1",
+    "path": "/Users/jamescroft/.bpm/gems/qunit-1.0.0.1"
+  }
+}

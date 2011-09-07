@@ -1,0 +1,24 @@
+{
+  "name": "sensor-maps",
+  "bpm": "1.0.0",
+  "version": "0.0.1",
+  "dependencies": {
+    "spade": "~> 1.0",
+    "sproutcore": "2.0.beta.3"
+  },
+  "bpm:build": {
+    "bpm_libs.js": {
+      "files": [
+        "lib"
+      ]
+    },
+    "example.js": {
+      "files": [ "example" ]
+    },
+    "bpm_styles.css": {
+      "files": [
+        "css"
+      ]
+    }
+  }
+}
