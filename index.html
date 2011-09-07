@@ -38,6 +38,44 @@
       </code>
       <div id="hoverable-polyline" class="map"></div>
     </div>
+
+    <h2 id="markers">Marker</h2>
+
+    <div class="example">
+      <p>A simple marker</p>
+      <code>
+        <pre>
+          map = SM.Map.create(divId: 'simple-marker')
+          marker = SM.Marker.create(lat: 51, lon: -0.2)
+          map.addObject(marker).fitAllObjects()
+        </pre>
+      </code>
+      <div id="simple-marker" class="map"></div>
+    </div>
+
+    <div class="example">
+      <p>A selectable marker</p>
+      <code>
+        <pre>
+          map = SM.Map.create(divId: 'selectable-marker')
+          marker = SM.SelectableMarker.create(lat: 51, lon: -0.2)
+          map.addObject(marker).fitAllObjects()
+        </pre>
+      </code>
+      <div id="selectable-marker" class="map"></div>
+    </div>
+
+    <div class="example">
+      <p>A hoverable marker</p>
+      <code>
+        <pre>
+          map = SM.Map.create(divId: 'hoverable-marker')
+          marker = SM.HoverableMarker.create(lat: 51, lon: -0.2)
+          map.addObject(marker).fitAllObjects()
+        </pre>
+      </code>
+      <div id="hoverable-marker" class="map"></div>
+    </div>
   </body>
   <script type="text/javascript" src="assets/bpm_libs.js"></script>
   <script type="text/javascript" src="assets/example.js"></script>
