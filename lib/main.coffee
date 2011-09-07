@@ -13,9 +13,10 @@ SM.Map = SC.Object.extend
   init: ->
     @_super()
     map = new L.Map @get('divId')
-    cloudmadeUrl = "http://{s}.tile.cloudmade.com/#{SM.CLOUDMADE_API_KEY}/997/256/{z}/{x}/{y}.png"
-    cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18})
-    map.addLayer cloudmade
+    cloudmadeTiles = new L.TileLayer "http://{s}.tile.cloudmade.com/#{SM.CLOUDMADE_API_KEY}/998/256/{z}/{x}/{y}.png",
+      maxZoom: 18
+    map.addLayer cloudmadeTiles
+    map.attributionControl.setPrefix('')
     @set('mapObject', map)
     @set('objects',[])
   addObject: (object) ->
