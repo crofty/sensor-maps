@@ -7,7 +7,7 @@ SM.CLOUDMADE_API_KEY = 'a33ede6a9595478ba1025f20398c0341'
 
 require('sensor-maps/polyline')
 require('sensor-maps/marker')
-require('sensor-maps/vehicle')
+require('sensor-maps/vehicle_marker')
 
 
 
