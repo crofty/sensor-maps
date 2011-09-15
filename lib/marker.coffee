@@ -1,10 +1,17 @@
 SM.Marker = SC.Object.extend
   init: ->
     @_super()
-    @set('mapObject', new L.CircleMarker(new L.LatLng(@get('lat'), @get('lon')), radius: 5))
+    lat = @get('lat')
+    lon = @get('lon')
+    @set('mapObject', new L.CircleMarker(new L.LatLng(lat,lon), radius: 5))
   bounds: ->
     latlng = @get('mapObject')._latlng
     new L.LatLngBounds(latlng,latlng)
+  _latDidChange: ( ->
+    console.log "Marker latitude did change"
+    mapObject = @get('mapObject')
+    mapObject.setLatLng(new L.LatLng(@getPath('vehicle.lat'),@getPath('vehicle.lon')))
+  ).observes('vehicle.lat')
 
 
 SM.SelectableMarker = SM.Marker.extend

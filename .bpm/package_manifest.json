@@ -40,7 +40,7 @@
     "path": "/Users/jamescroft/Development/sensor-maps/vendor/handlebars"
   },
   "qunit": {
-    "version": "1.0.0.1",
-    "path": "/Users/jamescroft/.bpm/gems/qunit-1.0.0.1"
+    "version": "1.0.0",
+    "path": "/Users/jamescroft/.bpm/gems/qunit-1.0.0"
   }
 }
