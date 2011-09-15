@@ -7,11 +7,6 @@ SM.Marker = SC.Object.extend
   bounds: ->
     latlng = @get('mapObject')._latlng
     new L.LatLngBounds(latlng,latlng)
-  _latDidChange: ( ->
-    console.log "Marker latitude did change"
-    mapObject = @get('mapObject')
-    mapObject.setLatLng(new L.LatLng(@getPath('vehicle.lat'),@getPath('vehicle.lon')))
-  ).observes('vehicle.lat')
 
 
 SM.SelectableMarker = SM.Marker.extend
