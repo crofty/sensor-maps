@@ -23,11 +23,14 @@ SM.VehicleMarker = SC.Object.extend
   init: ->
     @set('movingIcon', new SM.VehicleMovingIcon())
     @set('stoppedIcon', new SM.VehicleStoppedIcon())
+    # TODO: Leaflet won't let allow setIcon to be used on a marker object until it has
+    # been added to the map, hence I need to set all vehicles to display the stoppedIcon
+    # to begin with
     @mapObject = new L.Marker(new L.LatLng(@get('lat'),@get('lon')), icon: @get('stoppedIcon'))
   bounds: ->
     latlng = @get('mapObject')._latlng
     new L.LatLngBounds(latlng,latlng)
-  stateDidChange: ( ->
+  _stateDidChange: ( ->
     state = @getPath('vehicle.state')
     @set('icon', @get("#{state}Icon"))
   ).observes('vehicle.state')
@@ -36,9 +39,15 @@ SM.VehicleMarker = SC.Object.extend
     mapObject = @get('mapObject')
     mapObject.setLatLng(new L.LatLng(@getPath('vehicle.lat'),@getPath('vehicle.lon')))
   ).observes('vehicle.lat')
-  iconDidChange: ( ->
+  _iconDidChange: ( ->
     mapObject = @get('mapObject')
     if mapObject
       mapObject.setIcon @get('icon')
       mapObject._reset() # A reset is needed to redraw the layer
   ).observes('icon')
+  _rotationDidChange: ( ->
+    $img = $(@get('mapObject')._icon)
+    rotation = @getPath('vehicle.heading')
+    webkitTransform = $img.css('-webkit-transform')
+    $img.css('-webkit-transform', webkitTransform + " rotate(#{rotation}deg)")
+  ).observes('vehicle.heading')
