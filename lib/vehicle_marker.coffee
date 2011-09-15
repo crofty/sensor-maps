@@ -1,10 +1,9 @@
 require('sensor-maps/marker')
 
-# Icons required for the vehicle marker
 SM.VehicleMovingIcon = L.Icon.extend
   iconUrl: '/assets/images/marker-blue.png'
   iconSize: new L.Point(16, 22)
-  shadowSize: new L.Point(16, 22)
+  shadowSize: new L.Point(1, 1)
   iconAnchor: new L.Point(8,11)
 
 SM.VehicleStoppedIcon = L.Icon.extend
@@ -46,8 +45,9 @@ SM.VehicleMarker = SC.Object.extend
       mapObject._reset() # A reset is needed to redraw the layer
   ).observes('icon')
   _rotationDidChange: ( ->
-    $img = $(@get('mapObject')._icon)
-    rotation = @getPath('vehicle.heading')
-    webkitTransform = $img.css('-webkit-transform')
-    $img.css('-webkit-transform', webkitTransform + " rotate(#{rotation}deg)")
+    # TODO: rotation changes are lost when the map is zoomed
+    img = @get('mapObject')._icon
+    rotation = @getPath('vehicle.heading') || 0
+    value = img.style.getPropertyValue('-webkit-transform')
+    img.style.setProperty('-webkit-transform',value + " rotate(#{rotation}deg)")
   ).observes('vehicle.heading')
