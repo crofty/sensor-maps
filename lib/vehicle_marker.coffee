@@ -1,13 +1,15 @@
 require('sensor-maps/marker')
 
 SM.VehicleMovingIcon = L.Icon.extend
-  iconUrl: '/assets/images/marker-blue.png'
+  iconUrl: 'app/assets/images/marker-blue.png'
+  shadowUrl: 'app/assets/images/marker-shadow.png'
   iconSize: new L.Point(16, 22)
   shadowSize: new L.Point(1, 1)
   iconAnchor: new L.Point(8,11)
 
 SM.VehicleStoppedIcon = L.Icon.extend
-  iconUrl: '/assets/images/amber-dot.png'
+  iconUrl: 'app/assets/images/amber-dot.png'
+  shadowUrl: 'app/assets/images/marker-shadow.png'
   iconSize: new L.Point(15, 16)
   shadowSize: new L.Point(15, 16)
   iconAnchor: new L.Point(8,8)
