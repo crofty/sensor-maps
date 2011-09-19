@@ -25,6 +25,8 @@ SM.Map = SC.Object.extend
     @get('objects').push object
     @mapObject.addLayer(object.mapObject)
     this
+  addObjects: (objects) ->
+    objects.forEach (object) => @addObject(object)
   fitBounds: (bounds) ->
     @get('mapObject').fitBounds(bounds)
   fitAllObjects: ->

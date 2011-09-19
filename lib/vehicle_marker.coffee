@@ -1,15 +1,15 @@
 require('sensor-maps/marker')
 
 SM.VehicleMovingIcon = L.Icon.extend
-  iconUrl: 'app/assets/images/marker-blue.png'
-  shadowUrl: 'app/assets/images/marker-shadow.png'
+  iconUrl: '/images/marker-blue.png'
+  shadowUrl: '/images/marker-shadow.png'
   iconSize: new L.Point(16, 22)
   shadowSize: new L.Point(1, 1)
   iconAnchor: new L.Point(8,11)
 
 SM.VehicleStoppedIcon = L.Icon.extend
-  iconUrl: 'app/assets/images/amber-dot.png'
-  shadowUrl: 'app/assets/images/marker-shadow.png'
+  iconUrl: '/images/amber-dot.png'
+  shadowUrl: '/images/marker-shadow.png'
   iconSize: new L.Point(15, 16)
   shadowSize: new L.Point(15, 16)
   iconAnchor: new L.Point(8,8)
@@ -48,8 +48,8 @@ SM.VehicleMarker = SC.Object.extend
   ).observes('icon')
   _rotationDidChange: ( ->
     # TODO: rotation changes are lost when the map is zoomed
-    img = @get('mapObject')._icon
-    rotation = @getPath('vehicle.heading') || 0
-    value = img.style.getPropertyValue('-webkit-transform')
-    img.style.setProperty('-webkit-transform',value + " rotate(#{rotation}deg)")
+    # img = @get('mapObject')._icon
+    # rotation = @getPath('vehicle.heading') || 0
+    # value = img.style.getPropertyValue('-webkit-transform')
+    # img.style.setProperty('-webkit-transform',value + " rotate(#{rotation}deg)")
   ).observes('vehicle.heading')
