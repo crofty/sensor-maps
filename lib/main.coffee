@@ -9,12 +9,11 @@ require('sensor-maps/polyline')
 require('sensor-maps/marker')
 require('sensor-maps/vehicle_marker')
 
-
-
 SM.Map = SC.Object.extend
   init: ->
     @_super()
-    map = new L.Map @get('divId')
+    options = @get('options') || {}
+    map = new L.Map(@get('divId'), options)
     cloudmadeTiles = new L.TileLayer "http://{s}.tile.cloudmade.com/#{SM.CLOUDMADE_API_KEY}/998/256/{z}/{x}/{y}.png",
       maxZoom: 18
     map.addLayer cloudmadeTiles
