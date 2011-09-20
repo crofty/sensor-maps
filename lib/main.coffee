@@ -18,6 +18,8 @@ SM.Map = SC.Object.extend
       maxZoom: 18
     map.addLayer cloudmadeTiles
     map.attributionControl.setPrefix('')
+    # Marker rotation was not persisting through zoom changes
+    map.on 'zoomend', => @objects.forEach (o) -> o._rotationDidChange()
     @set('mapObject', map)
     @set('objects',[])
   addObject: (object) ->

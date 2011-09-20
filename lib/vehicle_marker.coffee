@@ -46,8 +46,8 @@ SM.VehicleMarker = SC.Object.extend
   ).observes('icon')
   _rotationDidChange: ( ->
     # TODO: rotation changes are lost when the map is zoomed
-    img = @get('mapObject')._icon
-    rotation = @getPath('vehicle.heading') || 0
-    value = img.style.getPropertyValue('-webkit-transform')
-    img.style.setProperty('-webkit-transform',value + " rotate(#{rotation}deg)")
+    if img = @get('mapObject')._icon
+      rotation = @getPath('vehicle.heading') || 0
+      value = img.style.getPropertyValue('-webkit-transform')
+      img.style.setProperty('-webkit-transform',value + " rotate(#{rotation}deg)")
   ).observes('vehicle.heading')
