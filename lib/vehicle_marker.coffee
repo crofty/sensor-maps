@@ -24,10 +24,8 @@ SM.VehicleMarker = SC.Object.extend
   init: ->
     @set('movingIcon', new SM.VehicleMovingIcon())
     @set('stoppedIcon', new SM.VehicleStoppedIcon())
-    # TODO: Leaflet won't let allow setIcon to be used on a marker object until it has
-    # been added to the map, hence I need to set all vehicles to display the stoppedIcon
-    # to begin with
-    @mapObject = new L.Marker(new L.LatLng(@get('lat'),@get('lon')), icon: @get('stoppedIcon'))
+    state = @getPath('vehicle.state')
+    @mapObject = new L.Marker(new L.LatLng(@get('lat'),@get('lon')), icon: @get("#{state}Icon"))
   bounds: ->
     latlng = @get('mapObject')._latlng
     new L.LatLngBounds(latlng,latlng)
@@ -48,8 +46,8 @@ SM.VehicleMarker = SC.Object.extend
   ).observes('icon')
   _rotationDidChange: ( ->
     # TODO: rotation changes are lost when the map is zoomed
-    # img = @get('mapObject')._icon
-    # rotation = @getPath('vehicle.heading') || 0
-    # value = img.style.getPropertyValue('-webkit-transform')
-    # img.style.setProperty('-webkit-transform',value + " rotate(#{rotation}deg)")
+    img = @get('mapObject')._icon
+    rotation = @getPath('vehicle.heading') || 0
+    value = img.style.getPropertyValue('-webkit-transform')
+    img.style.setProperty('-webkit-transform',value + " rotate(#{rotation}deg)")
   ).observes('vehicle.heading')
