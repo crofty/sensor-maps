@@ -14,6 +14,11 @@ SM.VehicleStoppedIcon = L.Icon.extend
   shadowSize: new L.Point(15, 16)
   iconAnchor: new L.Point(8,8)
 
+SM.PopupContent = Handlebars.compile """
+  <h2>{{registration}}<h2>
+  <p>Speed: {{speed}}mph</p>
+"""
+
 # Initialise this type of marker with a sensor vehicle
 # and the current lat and lon, e.g.
 #   marker = SM.VehicleMarker.create
@@ -26,6 +31,18 @@ SM.VehicleMarker = SC.Object.extend
     @set('stoppedIcon', new SM.VehicleStoppedIcon())
     state = @getPath('vehicle.state')
     @mapObject = new L.Marker(new L.LatLng(@get('lat'),@get('lon')), icon: @get("#{state}Icon"))
+    @get('map').addObject(this) # Add the object to the map
+    @_createPopup()
+  _createPopup: ->
+    @popup = new L.Popup()
+    @mapObject._popup = @popup
+    @mapObject.on('click', @mapObject.openPopup, @mapObject)
+    @_setPopupContent()
+  _setPopupContent: ->
+    html = SM.PopupContent
+      registration: @getPath('vehicle.registration')
+      speed: @getPath('vehicle.speed') || 0
+    @mapObject._popup.setContent(html)
   bounds: ->
     latlng = @get('mapObject')._latlng
     new L.LatLngBounds(latlng,latlng)
@@ -37,6 +54,7 @@ SM.VehicleMarker = SC.Object.extend
     console.log "Marker latitude did change"
     mapObject = @get('mapObject')
     mapObject.setLatLng(new L.LatLng(@getPath('vehicle.lat'),@getPath('vehicle.lon')))
+    @_setPopupContent()
   ).observes('vehicle.lat')
   _iconDidChange: ( ->
     mapObject = @get('mapObject')
