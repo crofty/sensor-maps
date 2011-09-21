@@ -15,7 +15,7 @@ SM.VehicleStoppedIcon = L.Icon.extend
   iconAnchor: new L.Point(8,8)
 
 SM.PopupContent = Handlebars.compile """
-  <h2>{{registration}}<h2>
+  <h2>{{registration}}</h2>
   <p>Speed: {{speed}}mph</p>
 """
 
