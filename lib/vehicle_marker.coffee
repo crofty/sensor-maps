@@ -14,10 +14,12 @@ SM.VehicleStoppedIcon = L.Icon.extend
   shadowSize: new L.Point(15, 16)
   iconAnchor: new L.Point(8,8)
 
-SM.PopupContent = Handlebars.compile """
-  <h2>{{registration}}</h2>
-  <p>Speed: {{speed}}mph</p>
-"""
+SM.PopupContent = SC.View.extend
+  template: SC.Handlebars.compile """
+    <h2>{{registration}}</h2>
+    <p>Speed: {{speed}}mph</p>
+    <a {{bindAttr href="url"}}>Zoom</a>
+  """
 
 # Initialise this type of marker with a sensor vehicle
 # and the current lat and lon, e.g.
@@ -39,10 +41,12 @@ SM.VehicleMarker = SC.Object.extend
     @mapObject.on('click', @mapObject.openPopup, @mapObject)
     @_setPopupContent()
   _setPopupContent: ->
-    html = SM.PopupContent
+    view = SM.PopupContent.create
       registration: @getPath('vehicle.registration')
       speed: @getPath('vehicle.speed') || 0
-    @mapObject._popup.setContent(html)
+      url: "#/map/#{@getPath('vehicle.imei')}"
+    view.createElement()
+    @mapObject._popup.setContent(view.get('element'))
   bounds: ->
     latlng = @get('mapObject')._latlng
     new L.LatLngBounds(latlng,latlng)
